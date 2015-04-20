@@ -27,12 +27,22 @@ def list():
 def audio(songid):
     with MusicFlaskDatabase() as db:
         data = json.loads(db[songid.encode('utf-8')])
+    print "----------------------------------"
+    print " "
     url = data['url']
-    http = 'wget -qO- {}'.format(url)
-    ffmpeg = 'ffmpeg -loglevel panic -i - -f mp3 -'
+    print url
+    print " "
+    http = 'curl -o {}.mp4 {}'.format(songid,url)
+    #http = 'wget -qO- {}'.format(url)
+    print http
+    print " "
+    #ffmpeg = 'ffmpeg -loglevel panic -i - -f mp3 -'
+    ffmpeg = 'ffmpeg -i {}.mp4 {}.mp3'.format(songid,songid)
+    print " "
+    print "----------------------------------"
 
     http_process = subprocess.Popen(http.split(), stdout=subprocess.PIPE)
-    ffmpeg_process = subprocess.Popen(ffmpeg.split(), stdin=http_process.stdout, stdout=subprocess.PIPE)
+    ffmpeg_process = subprocess.Popen(ffmpeg.split(), shell=True, stdin=http_process.stdout, stdout=subprocess.PIPE)
 
     return Response(ffmpeg_process.stdout, mimetype = 'audio/mpeg', headers = {
                'Content-Disposition': 'attachment;fileneme=' + songid })

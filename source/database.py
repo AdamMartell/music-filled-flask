@@ -1,6 +1,6 @@
 #!/usr/bin/env python2
 
-import bsddb
+import bsddb3
 import contextlib
 import json
 
@@ -11,9 +11,9 @@ def MusicFlaskDatabase(db_path=None, writable=False):
     db_path = db_path = DATABASE_PATH
 
     if writable:
-        database = bsddb.btopen(db_path, 'c')
+        database = bsddb3.btopen(db_path, 'c')
     else:
-        database = bsddb.btopen(db_path, 'r')
+        database = bsddb3.btopen(db_path, 'r')
     yield database
     database.close()
 
