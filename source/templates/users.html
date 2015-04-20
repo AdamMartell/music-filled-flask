@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>A Muzik Filled Flask</title>
+<link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet" type="text/css" />
+</head>
+<style>
+table, tr, td { 
+	border: 1px solid #000;
+}
+table {
+	-webkit-border-radius: 5px !important;
+	-moz-border-radius: 5px !important;
+	border-radius: 5px !important;
+	width:100%;
+}
+body {
+	background-color:#333;
+}
+a {
+	color:#FFF !important;
+}
+h1 {
+	font-size:42px !important;
+}
+</style>
+<script type="text/javascript">
+function easyadd(name) {
+var nn = document.getElementById('newname').value;
+var linx = "playlist/" + nn;	
+window.location = linx;
+}
+</script>
+<body>
+<div style="height:15px !important; width:100%;"></div>
+<div class="container">
+   <div class="marketing">
+     <div class="row-fluid">
+	<div class="span3">
+		<h1 style="color: #FFF !important;">Playlists</h1>
+		<p>&nbsp;</p>
+                <input id="newname" maxlength="9" placeholder="new playlist name" style="width:90% !important;" type="text">          
+                <button class="btn" type="button"onClick="easyadd()" >Create new playlist</button> 
+		<p>&nbsp;</p> 
+  		<h3 style="color: #FFF !important;">Recently Added</h3>
+<ul class="nav nav-list">
+		{% for song in songs %}
+		<hr />
+		<li style="color:#FFF;">{{song.title}}</li>
+        	{% endfor %}
+		</ul>
+		<p>&nbsp;</p>
+      </div>
+      <div class="span9">	
+  	<div class="row-fluid">    
+	
+	{% for line in users %}
+	<div class="span3">	
+	<a href="/playlist/{{ line }}">	
+	<img src="http://wikieducator.org/images/1/16/Dummy_user.png"/>
+	<p>{{ line }}</p></a>
+	</div>
+	{% endfor %}
+        
+	</div>
+      </div>
+</div>
+</div>
+</div>
+</body>
+</html>

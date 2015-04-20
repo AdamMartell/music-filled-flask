@@ -1,4 +1,4 @@
-# music-filled-flask
+# Music Filled Flask
 
 Youtube Transcoder served by Flask.
 
@@ -13,7 +13,7 @@ Have a bug or want to add something? Please create an issue or a pull request ri
 https://github.com/jaegernh/music-filled-flask
 
 
-AUTHORS & Contributors
+Authors & Contributors
 ------------------------
 
 **Nick Jaeger**

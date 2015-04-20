@@ -1,0 +1,4 @@
+from playlist2 import Application
+
+def app_factory(global_config, **local_config):
+    return Application.wsgi_app

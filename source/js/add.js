@@ -1,0 +1,4 @@
+function addsong() {
+
+    alert("test");
+}

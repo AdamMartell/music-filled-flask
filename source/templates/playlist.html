@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>A Muzik Filled Flask</title>
+<link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet" type="text/css" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<style>
+body {
+        background-color:#333;
+}
+a {
+        color:#FFF !important;
+}
+li a:hover {
+	color: #FFF !important;
+	background-color:#666 !important;
+}
+#youtube_url {
+	width:90% !important;
+}
+</style>
+</head>
+
+<body>
+<div style="height:15px !important; width:100%;"></div>
+<div class="container">
+   <div class="marketing">
+     <div class="row-fluid">   
+        <div class="span3">
+		<p>&nbsp;</p>
+		<img src="http://wikieducator.org/images/1/16/Dummy_user.png" />
+                <h2 style="color: #FFF !important;">
+		{% if playlistid %}
+		{{ playlistid }}
+		{% else %}
+	 	no name
+		{% endif %}
+		</h2>
+		<p><a href="../../">Back</a></p>      
+		<form action="/playlist/{{playlistid}}?" method="post">
+   		 {{ form.csrf_token }}
+    		 {{ form.youtube_url.label }} {{ form.youtube_url(size=20) }}
+    		 <p><input type="submit" value="Add Song" class="btn" onclick=""></p>
+		</form>
+		<p>&nbsp;</p> 
+                <h3 style="color: #FFF !important;">Recently Added</h3>
+<ul class="nav nav-list">
+                {% for song in songs %}
+                <hr />
+                <li style="color:#FFF;">{{song.title}}</li>
+                {% endfor %}
+                </ul>
+		<p>&nbsp;</p>
+      </div>
+      <div class="span9">       
+        <div class="row-fluid">   
+	  <div class="span12" style="text-align:left !important;">
+
+
+
+
+<ul class="nav nav-pills nav-stacked">
+{% for song_id, song_data in playlist.items() %}
+   <li><a href="/song/{{ song_id}}">
+
+<table>
+<tr>
+<td>
+	 <img src="{{ song_data['thumbnail'] }}"/>
+</td>
+<td>
+	<p>{{ song_data['stitle'] }}</p>
+
+
+<p>
+<audio controls height="100" width="100">
+  <source src="{{'/song/' + song_id }}" type="audio/mpeg">
+  <embed height="50" width="100" src="{{'/song/' + song_id }}">
+</audio>
+</p>
+
+
+
+</td>
+</tr></table>
+
+   </a></li>
+{% endfor %}
+</ul>
+
+
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
+

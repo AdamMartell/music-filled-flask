@@ -1,0 +1,3 @@
+{% for song_id, song_data in playlist.items() -%}
+{{ request.url_root + 'song/' + song_id }}
+{% endfor %}

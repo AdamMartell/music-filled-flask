@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>A Muzik Filled Flask</title>
+<link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+</script>
+
+<div class="container">
+  <div class="marketing">
+     <div class="row-fluid">
+        <div class="span12">
+
+{% if playlistid %}
+<h2>Playlist: {{ playlistid }}</h2>
+{% else %}
+<h2>Playlist: no name</h2>
+{% endif %}
+
+<ol>
+{% for song_id, song_data in playlist.items() %}
+<li><img src="{{ song_data['thumbnail'] }}"><a href="/song/{{ song_id }}">{{ song_data['stitle'] }}</a> ({{ song_id }})</li>
+{% endfor %}
+</ol>
+
+<form method="POST" action="/playlist/{{playlistid}}?">
+    {{ form.csrf_token }}
+    {{ form.youtube_url.label }} {{ form.youtube_url(size=20) }}
+    <p><input type="submit" value="Add" class="btn" onclick=""></p>
+</form>
+
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>
+
