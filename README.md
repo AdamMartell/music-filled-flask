@@ -4,6 +4,8 @@ Youtube Transcoder served by Flask.
 
 This is derived from the original project code from spring 2013.
 
+This software is for educational and research purposes only. Please refer to the TOS of all the software dependencies as well as Youtube before running the code.
+
 
 Bugs & Additions
 ------------------------
