@@ -1,0 +1,28 @@
+Setup notes
+------------------------
+
+
+brew install berkeley-db
+pip install bsddb3
+BERKELEYDB_DIR=$(brew --cellar)/berkeley-db/5.3.28 pip install bsddb3
+BERKELEYDB_DIR=/usr/local/Cellar/berkeley-db/5.3.15/ pip install bsddb3
+BERKELEYDB_DIR=/usr/local/Cellar/berkeley-db/6.1.19/ pip install bsddb3
+
+
+brew install berkeley-db4
+
+download and setup youtube-dl
+correctly reference in program
+
+
+install paster …. pastescript-1.7.5
+install WSGIUtils-0.7
+
+curl or wget / install?
+
+
+
+
+
+Give permissions for file access/writing:
+sudo chmod -R 777 *
